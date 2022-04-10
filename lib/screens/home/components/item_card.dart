@@ -34,16 +34,7 @@ class ItemCard extends StatelessWidget {
                     tag: "${product.id}",
                     child: Image.asset(product.image),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(8),
-                    width: 50,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFF6464),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text('Sale!!'),
-                  ),
+                  
                   
                 ]
               ),

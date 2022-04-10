@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plant_app/models/Product.dart';
 import 'package:plant_app/screens/AboutUs.dart';
+import 'package:plant_app/screens/drawer.dart';
 import '../../constants.dart';
 import '../details/details_screen.dart';
 import 'components/body.dart';
 import 'components/item_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,23 +16,48 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _auth = FirebaseAuth.instance;
+  User signedInUser;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        signedInUser = user;
+        print(signedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
+      //drawer: MyDrawer(),
       body: Body(),
     );
   }
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 254, 254),
       elevation: 1,
       title: const Text('التسوق الالكتروني',
-          style: TextStyle(color: Color(0xFF535353))),
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        onPressed: () {},
+          style: TextStyle(color: Color.fromARGB(255, 92, 91, 91))),
+      leading:
+      IconButton(
+        icon: SvgPicture.asset("assets/icons/menu.svg"),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyDrawer()));
+        },
       ),
       actions: <Widget>[
         IconButton(
