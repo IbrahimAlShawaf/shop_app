@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "105361862104",
+    "project_id": "shop-app-b9ba6",
+    "storage_bucket": "shop-app-b9ba6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105361862104:android:1ed98577ff52a8af70d6ad",
+        "android_client_info": {
+          "package_name": "com.shop.borhom22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105361862104-jndh3acatrr1noopt29g5nuujob0l2ml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGRpqWSoGe6sOmq6ODeB8muoswHaVJYQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105361862104-jndh3acatrr1noopt29g5nuujob0l2ml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
