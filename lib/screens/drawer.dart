@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/screens/AboutUs.dart';
+import 'package:plant_app/screens/home/home_screen.dart';
 import 'package:plant_app/screens/home/login_screen/loginscreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,139 +17,162 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  final _auth = FirebaseAuth.instance;
-  final _textcolor = Colors.purple[900];
+  // final _auth = FirebaseAuth.instance;
+  // final _textcolor = Colors.purple[900];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      color: Color.fromARGB(166, 89, 121, 226),
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 20),
+    return Drawer(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        color: Colors.white,
+        //width: 100,
+        // height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
-            Image(
-              image: AssetImage('assets/images/logo.jpg'),
-              width: 350,
-              height: 250,
+            const SizedBox(
+              height: 50,
+            ),
+            const Align(
+              alignment: Alignment.center,
+              child: CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/logo.jpg'),
+              ),
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
-            Text(
-              'عــالم الفضة',
-                style: TextStyle(
+            Center(
+              child: Text(
+                'عالم الفضة',
+                style: GoogleFonts.changa(
                     fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 255, 254, 254))),
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
             const SizedBox(
-              height: 15,
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    launch("https://www.facebook.com/ahmed.srour.9210256");
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.facebookF,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    launch("https://wa.me/+972597365736");
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.whatsapp,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    launch("https://m.me/ahmed.srour.9210256");
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.facebookMessenger,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
             const Divider(
-              color: Color.fromARGB(255, 245, 242, 242),
-              thickness: 1.0,
-              height: 3.0,
+              color: Colors.black,
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
+            ListTile(
+              onTap: () {
+                Get.to(() => HomeScreen());
               },
-              child: Row(
+              trailing: const Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              title: Text(
+                'الرئيسية',
                 textDirection: TextDirection.rtl,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(FontAwesomeIcons.newspaper),
-                    iconSize: 35,
-                    color: Colors.grey[900],
-                  ),
-                  const SizedBox(
-                    width: 22,
-                  ),
-                  Text(
-                    'الرئيسية',
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 251, 250, 252)),
-                  ),
-                ],
+                style: GoogleFonts.abrilFatface(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => AboutUs()));
+            ListTile(
+              onTap: () {
+                Get.to(const AboutUs());
               },
-              child: Row(
+              trailing: const Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              title: Text(
+                'من نحن',
                 textDirection: TextDirection.rtl,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => AboutUs()));
-                    },
-                    icon: Icon(FontAwesomeIcons.chalkboardTeacher),
-                    iconSize: 35,
-                    color: Colors.grey[900],
-                  ),
-                  const SizedBox(
-                    width: 25,
-                  ),
-                  Text(
-                    'من نحن',
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 250, 249, 252)),
-                  ),
-                ],
+                style: GoogleFonts.abrilFatface(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                _auth.signOut();
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginPage()));
+            ListTile(
+              onTap: () {
+                Get.to(confirmOut());
               },
-              child: Row(
+              trailing: const Icon(
+                Icons.logout,
+                color: Colors.black,
+              ),
+              title: Text(
+                'خروج',
                 textDirection: TextDirection.rtl,
-                children: [
-                  IconButton(
-                    onPressed: (() {
-                      _auth.signOut();
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()));
-                    }),
-                    icon: Icon(
-                      FontAwesomeIcons.xmark,
-                    ),
-                    iconSize: 35,
-                    color: Colors.grey[900],
-                  ),
-                  const SizedBox(
-                    width: 22,
-                  ),
-                  Text(
-                    'خروج',
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 251, 250, 252)),
-                  ),
-                ],
+                style: GoogleFonts.abrilFatface(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  confirmOut() {
+    Get.defaultDialog(
+      backgroundColor: Colors.white,
+      title: 'الخروج من التطبيق',
+      titleStyle: GoogleFonts.changa(color: Colors.black),
+      middleText: 'هل تريد الخروج من التطبيق؟',
+      middleTextStyle: GoogleFonts.changa(
+          color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+      textCancel: 'إلغاء',
+      textConfirm: 'تأكيد',
+      buttonColor: Colors.black,
+      confirmTextColor: Colors.white,
+      cancelTextColor: Colors.black,
+      onConfirm: () {
+        SystemNavigator.pop();
+        //exit();
+      },
+      //onCancel: (){},
+      radius: 60,
+      barrierDismissible: false,
     );
   }
 }

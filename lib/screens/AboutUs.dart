@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutUs extends StatefulWidget {
@@ -13,13 +15,25 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(166, 89, 121, 226),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('نبذة عن المشروع'),
+        title: Text(
+          'نبذة عن المشروع',
+          style: GoogleFonts.changa(fontSize: 20, color: Colors.black),
+        ),
         elevation: 5.0,
-        shadowColor: Colors.white,
-        backgroundColor: Color.fromARGB(166, 89, 121, 226),
+        shadowColor: Colors.black,
+        backgroundColor: Colors.white,
+        leading: InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            )),
       ),
+
       // drawer: MyDrawer(),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -28,25 +42,19 @@ class _AboutUsState extends State<AboutUs> {
           const SizedBox(
             height: 20,
           ),
-          const Divider(
-            height: 6.0,
-            thickness: 4.0,
-            color: Colors.yellow,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
           Text(
             ' بطاقة تعريف بالمشروع ومجاله ',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              shadows: [
-                        Shadow(
-                          color: Colors.black,
-                          blurRadius: 20.0,
-                        ),
-                      ],
-                fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+            style: GoogleFonts.changa(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    color: Colors.black,
+                    blurRadius: 20.0,
+                  ),
+                ],
+                color: Colors.black),
           ),
           const SizedBox(
             height: 10,
@@ -114,7 +122,7 @@ class _AboutUsState extends State<AboutUs> {
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         width: 10,
@@ -135,9 +143,9 @@ class _AboutUsState extends State<AboutUs> {
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.red[900]),
-                          child: const Icon(FontAwesomeIcons.phoneAlt),
+                          child: const Icon(FontAwesomeIcons.phone),
                           onPressed: () {
-                            launch('tel: +');
+                            launch('tel: +972597365736');
                           }),
                       const SizedBox(
                         width: 15,
@@ -147,7 +155,7 @@ class _AboutUsState extends State<AboutUs> {
                               primary: Colors.green[900]),
                           child: const Icon(FontAwesomeIcons.whatsapp),
                           onPressed: () {
-                            launch('http://wa.me/+');
+                            launch('http://wa.me/+972597365736');
                           }),
                       const SizedBox(
                         width: 15,
@@ -161,11 +169,10 @@ class _AboutUsState extends State<AboutUs> {
                   height: 5,
                 ),
 
-                
                 const Divider(
-                  height: 6.0,
-                  thickness: 4.0,
-                  color: Colors.yellow,
+                  height: 3.0,
+                  thickness: 2.0,
+                  color: Colors.black,
                 ),
                 SizedBox(
                   height: 20,
@@ -173,7 +180,7 @@ class _AboutUsState extends State<AboutUs> {
                 Text(
                   'مجال المشروع',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: GoogleFonts.changa(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       shadows: [
@@ -182,18 +189,18 @@ class _AboutUsState extends State<AboutUs> {
                           blurRadius: 20.0,
                         ),
                       ],
-                      color: Colors.white),
+                      color: Colors.black),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
                   'يقع مجال المشروع في حقل تطبيقات الهواتف الذكية، فهو تطبيق خاص بالتجارة الالكترونية لجميع الناس الذين يملكون هواتف ذكية، فيستطيع جميع الأشخاص استعراض المنتجات وشراءها من خلال التطبيق حيث يتم إضافة المنتج الى سلة المشتريات ويتم دفع قيمة المشتريات من خلال ادخال بيانات بطاقة الدفع المسبق (الفيزا كارد) ويتم خصم قيمة السلة من بطاقة المشتري ',
-                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
                   style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      fontSize: 22,
+                      //fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
               ],
             ),
