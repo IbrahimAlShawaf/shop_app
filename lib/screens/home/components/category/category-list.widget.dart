@@ -25,6 +25,7 @@ class CategoryList extends StatelessWidget {
           SizedBox(width: 10,),
           CategoryItem(image: "assets/images/bike_6.png"),
           SizedBox(width: 10,),
+          
           CategoryItem(image: "assets/images/h1.png"),
           SizedBox(width: 10,),
           CategoryItem(image: "assets/images/h2.png"),

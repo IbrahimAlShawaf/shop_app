@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   AppBar buildAppBar() {
     return AppBar(
       backgroundColor: Color.fromARGB(255, 255, 254, 254),
-      elevation: 1,
+      elevation: 1.0,
       title: const Text('التسوق الالكتروني',
           style: TextStyle(color: Color.fromARGB(255, 92, 91, 91))),
       leading:

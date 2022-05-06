@@ -13,7 +13,6 @@ class Product {
     this.description,
     this.size,
     this.color,
-    
   });
 }
 
@@ -26,7 +25,15 @@ List<Product> all = [
     description: descript,
     image: "assets/images/h1.png",
     color: Color(0xFF3D82AE),
-   
+  ),
+  Product(
+    id: 1,
+    title: "Helmet 1",
+    price: 99,
+    size: 0,
+    description: descript,
+    image: "assets/images/h1.png",
+    color: Color(0xFF3D82AE),
   ),
   Product(
       id: 2,
@@ -77,7 +84,6 @@ List<Product> all = [
     description: descript,
     image: "assets/images/bike_1.png",
     color: Color.fromARGB(255, 107, 0, 107),
-    
   ),
   Product(
       id: 8,
@@ -119,6 +125,15 @@ List<Product> all = [
     description: descript,
     image: "assets/images/bike_6.png",
     color: Color.fromARGB(255, 0, 173, 72),
+  ),
+  Product(
+    id: 13,
+    title: "Bike 7",
+    price: 99,
+    size: 0,
+    description: descript,
+    image: "assets/images/h1.png",
+    color: Color(0xFF3D82AE),
   ),
 ];
 
@@ -172,6 +187,16 @@ List<Product> helmets = [
     image: "assets/images/h6.png",
     color: Color(0xFFAEAEAE),
   ),
+  Product(
+    id: 7,
+    title: "محبس فضة محجر",
+    price: 234,
+    size: 12,
+    description: descript,
+    image: "assets/images/h6.png",
+    color: Color.fromARGB(255, 0, 173, 72),
+  ),
+  
 ];
 
 List<Product> products = [
@@ -183,7 +208,6 @@ List<Product> products = [
     description: descript,
     image: "assets/images/bike_1.png",
     color: Color.fromARGB(255, 107, 0, 107),
-   
   ),
   Product(
       id: 2,
@@ -219,6 +243,15 @@ List<Product> products = [
       color: Color.fromARGB(255, 15, 0, 100)),
   Product(
     id: 6,
+    title: "خاتم فضة محجر",
+    price: 234,
+    size: 12,
+    description: descript,
+    image: "assets/images/bike_6.png",
+    color: Color.fromARGB(255, 0, 173, 72),
+  ),
+  Product(
+    id: 7,
     title: "خاتم فضة محجر",
     price: 234,
     size: 12,
